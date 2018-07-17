@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Text restartText;
     [SerializeField] private Text gameOverText;
     [SerializeField] private Text gameWonText;
+    [SerializeField] private Text startText;
+
         
     private bool gameOver, gameWon, restart;
     private int goldScore, gemsScore;
@@ -26,9 +28,16 @@ public class GameController : MonoBehaviour
 	    restart = false;
 	    goldScore = 0;
 	    gemsScore = 0;
+	    StartCoroutine("StartText");
 	    UpdateGoldCoins();
 	    UpdateGems();
 	}
+
+    IEnumerator StartText()
+    {
+        yield return new WaitForSeconds(8f);
+        startText.gameObject.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
